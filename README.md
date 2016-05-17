@@ -1,0 +1,2 @@
+# DoubanWebSpider
+基于WebMagic的一个JAVA爬虫，抓取豆瓣特定用户的广播中的SNS信息
