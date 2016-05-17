@@ -1,5 +1,8 @@
 package test0430;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Site;
 import us.codecraft.webmagic.Spider;
@@ -33,19 +36,37 @@ public class DoubanProcessor implements PageProcessor{
 	@Override
 	public void process(Page page) {
 		// TODO Auto-generated method stub
+		
 //		page.addTargetRequests(page.getHtml().links()
 //				.regex("http://www\\.douban\\.com/people/53827874/statuses\\?p=\\d").all());
-//		page.addTargetRequests(page.getHtml().css("div.paginator").links().regex(".*\\?p=\\d{1,2}").all());
+		page.addTargetRequests(page.getHtml().css("div.paginator").links().regex(".*\\?p=\\d{1,2}").all());
 
 //		page.putField("say", page.getHtml().css("div.status-saying").css("p").all().toString());
 		
-		page.putField("StatusSaying", page.getHtml().xpath("//div[@data-action='1']").xpath("//div[@class='status-saying']/blockquote").all());
-		page.putField("time", page.getHtml().xpath("//div[@data-action='1' and @data-target-type='sns']").xpath("div[@class='actions']").regex("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}").all());
-		page.putField("actions", page.getHtml().xpath("//div[@data-action='1' and @data-target-type='sns']").xpath("div[@class='actions']").all());
+
+		List<String> StatusSaying = page.getHtml().xpath("//div[@data-action='1']").xpath("//div[@class='status-saying']/blockquote/p/text()").all();
+		List<String> actions = page.getHtml().xpath("//div[@data-action='1' and @data-target-type='sns']").xpath("div[@class='actions']").all();
+		List<String> time = page.getHtml().xpath("//div[@data-action='1' and @data-target-type='sns']").xpath("div[@class='actions']").regex("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}").all();
+		List<InfoModel> infoList=new ArrayList<InfoModel>();
 		
-		if(page.getResultItems().get("StatusSaying").toString().length()==0){
+		if(StatusSaying.isEmpty()){
 			page.setSkip(true);
+		}		
+		
+		for(int i=0; i<actions.size(); i++){
+			InfoModel info=new InfoModel();
+			
+			info.setSns(StatusSaying.get(i).toString());
+			info.setUpdateTime(time.get(i).toString());
+			
+			if(actions.get(i).toString().contains("status_source")){
+				info.setSource("¶¹°êAPP");
+			}else
+				info.setSource("WEB");
+			infoList.add(info);
 		}
+		page.putField("broadcast", infoList);
+		
 	}
 
 	@Override
