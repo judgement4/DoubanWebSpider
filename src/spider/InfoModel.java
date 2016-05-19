@@ -1,10 +1,27 @@
-package test0430;
+package spider;
 
 public class InfoModel {
 	private String sns;
 	private String updateTime;
 	private String source;
+
+	private String ifshared;
+	private int id;
 	
+	
+	
+	public String getIfshared() {
+		return ifshared;
+	}
+	public void setIfshared(String ifshared) {
+		this.ifshared = ifshared;
+	}
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public String getSns() {
 		return sns;
 	}

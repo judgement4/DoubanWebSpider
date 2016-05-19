@@ -2,6 +2,7 @@
 <classpath>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="D:/MyEclipse Professional 2014/Workspaces/hibernate/WebRoot/WEB-INF/lib/mysql-connector-java-3.1.14-bin.jar"/>
 	<classpathentry kind="lib" path="D:/360极速浏览器下载/webmagic-master/lib/assertj-core-1.5.0.jar"/>
 	<classpathentry kind="lib" path="D:/360极速浏览器下载/webmagic-master/lib/commons-codec-1.6.jar"/>
 	<classpathentry kind="lib" path="D:/360极速浏览器下载/webmagic-master/lib/commons-collections-3.2.1.jar"/>
@@ -26,5 +27,12 @@
 	<classpathentry kind="lib" path="D:/360极速浏览器下载/webmagic-master/lib/webmagic-core-0.5.2.jar" sourcepath="/org.springframework.aop/webmagic-master"/>
 	<classpathentry kind="lib" path="D:/360极速浏览器下载/webmagic-master/lib/webmagic-extension-0.5.2.jar"/>
 	<classpathentry kind="lib" path="D:/360极速浏览器下载/webmagic-master/lib/xsoup-0.2.4.jar"/>
+	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/hibernate3.jar"/>
+	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/required/antlr-2.7.6.jar"/>
+	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/required/commons-collections-3.1.jar"/>
+	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/required/dom4j-1.6.1.jar"/>
+	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/required/javassist-3.9.0.GA.jar"/>
+	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/required/jta-1.1.jar"/>
+	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/required/slf4j-api-1.5.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
