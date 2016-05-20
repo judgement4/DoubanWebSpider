@@ -12,24 +12,27 @@ import us.codecraft.webmagic.processor.PageProcessor;
 
 public class DoubanProcessor implements PageProcessor{
 	
+	//key-value为需要设置的登录cookie
+	private String key;
+	private String value;
+	
 	public static String str="Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/45.0.2454.101 Safari/537.36";
+	
 	private Site site=Site.me()
 			   .setCharset("utf-8")
 			   .setUserAgent(str)
 			   .setRetryTimes(4)
 			   .setSleepTime(3000)
 			   .setDomain("douban.com")
-			   .addCookie("dbcl2", "53827874:lginbDA/+9w");
+			   .addCookie("key", "value");
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		String str1="https://www.douban.com/people/53827874/statuses?p=1";
-		String str2="https://www.douban.com/group/topic/6457749/";
-		String str3="https://www.douban.com/people/72066296/statuses";
 		
-	
+		//设置需要爬取的起始URL，通常为www.douban.com/people/XXXXXX/statuses
+		String url="";
 		Spider.create(new DoubanProcessor())
-		.addUrl(str3)
+		.addUrl(url)
 		.thread(2)
 		.addPipeline(new FilePipeline("/workspace/WebMagic"))
 		.start();
@@ -39,13 +42,10 @@ public class DoubanProcessor implements PageProcessor{
 	@Override
 	public void process(Page page) {
 		// TODO Auto-generated method stub
-		//		page.addTargetRequests(page.getHtml().links()
-		//		.regex("http://www\\.douban\\.com/people/53827874/statuses\\?p=\\d").all());
-//		page.addTargetRequests(page.getHtml().css("div.paginator").links().regex(".*\\?p=\\d{1,2}").all());
 		
-		//page.putField("say", page.getHtml().css("div.status-saying").css("p").all().toString());
-		
-		
+		//从页面下端的分页列表中获取需要爬取的页面URL
+		page.addTargetRequests(page.getHtml().css("div.paginator").links().regex(".*\\?p=\\d{1,2}").all());
+				
 		List<String> StatusSaying = page.getHtml().xpath("//div[@data-action='1']").xpath("//div[@class='status-saying']/blockquote/p/text()").all();
 		List<String> actions = page.getHtml().xpath("//div[@data-action='1' and @data-target-type='sns']").xpath("div[@class='actions']").all();
 		List<String> time = page.getHtml().xpath("//div[@data-action='1' and @data-target-type='sns']").xpath("div[@class='actions']").regex("\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}").all();
@@ -71,8 +71,8 @@ public class DoubanProcessor implements PageProcessor{
 				info.setSource("豆瓣APP");
 			}else
 				info.setSource("WEB");
-			Dao dao=new InfoDAO();
-			dao.save(info);
+				Dao dao=new InfoDAOHibernate();
+				dao.save(info);
 			infoList.add(info);
 		}
 		

@@ -34,5 +34,6 @@
 	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/required/javassist-3.9.0.GA.jar"/>
 	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/required/jta-1.1.jar"/>
 	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/required/slf4j-api-1.5.8.jar"/>
+	<classpathentry kind="lib" path="D:/360极速浏览器下载/hibernate-distribution-3.3.2.GA-dist/hibernate-distribution-3.3.2.GA/lib/optional/c3p0/c3p0-0.9.1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

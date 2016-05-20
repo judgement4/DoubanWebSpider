@@ -23,7 +23,7 @@ public class HibernateSessionFactory {
     private static org.hibernate.SessionFactory sessionFactory;
 	
     private static Configuration configuration = new Configuration();
-    private static String CONFIG_FILE_LOCATION = "/spider/hibernate.cfg.xml";
+    private static String CONFIG_FILE_LOCATION = "/hibernate.cfg.xml";
     private static String configFile = CONFIG_FILE_LOCATION;
 
 	static {

@@ -1,11 +1,11 @@
 package spider;
 
 public class InfoModel {
-	private String sns;
-	private String updateTime;
-	private String source;
-
-	private String ifshared;
+	
+	private String sns;         //广播的文字内容
+	private String updateTime;  //广播的更新时间
+	private String source;      //广播来源WEB或者APP
+	private String ifshared;    //广播为转发还是原创
 	private int id;
 	
 	
